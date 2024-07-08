@@ -19,11 +19,6 @@ namespace SnakeGame
             Console.WriteLine("Game Over! Your score: " + score);
         }
 
-        static void InitGame() {}
-        static void DrawBoard() {}
-        static void ProcessInput() {}
-        static void Update() {}
-
         static int width = 20;
         static int height = 20;
         static int score = 0;
