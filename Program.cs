@@ -29,5 +29,32 @@ namespace SnakeGame
         static int score = 0;
         static bool gameOver = false;
         static int delay = 500; // Temps entre chaque tour (en millisecondes)
+
+        static void ProcessInput()
+        {
+            if (Console.KeyAvailable)
+            {
+                var key = Console.ReadKey(true).Key;
+                switch (key)
+                {
+                    case ConsoleKey.UpArrow:
+                        if (currentDirection != Direction.Down)
+                            currentDirection = Direction.Up;
+                        break;
+                    case ConsoleKey.DownArrow:
+                        if (currentDirection != Direction.Up)
+                            currentDirection = Direction.Down;
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        if (currentDirection != Direction.Right)
+                            currentDirection = Direction.Left;
+                        break;
+                    case ConsoleKey.RightArrow:
+                        if (currentDirection != Direction.Left)
+                            currentDirection = Direction.Right;
+                        break;
+                }
+            }
+        }
     }
 }
