@@ -37,6 +37,31 @@ namespace SnakeGame
             GenerateFood();
         }
 
+        static void DrawBoard()
+        {
+            Console.Clear();
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    if (snake.Any(p => p.X == x && p.Y == y))
+                    {
+                        Console.Write("O");
+                    }
+                    else if (food.X == x && food.Y == y)
+                    {
+                        Console.Write("X");
+                    }
+                    else
+                    {
+                        Console.Write(".");
+                    }
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("Score: " + score);
+        }
+
         static void ProcessInput()
         {
             if (Console.KeyAvailable)
