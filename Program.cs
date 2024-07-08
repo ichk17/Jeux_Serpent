@@ -96,5 +96,14 @@ namespace SnakeGame
                 snake.RemoveAt(snake.Count - 1);
             }
         }
+
+        static void GenerateFood()
+        {
+            do
+            {
+                food = new Point(rand.Next(width), rand.Next(height));
+            }
+            while (snake.Any(p => p.X == food.X && p.Y == food.Y));
+        }
     }
 }
