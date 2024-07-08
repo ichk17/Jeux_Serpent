@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\gmansutti\\.nuget\\packages\\": {}
+    "/Users/imran.chikh/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Java Projects\\jeux_serpent\\jeux_serpent.csproj",
+      "projectUniqueName": "/Users/imran.chikh/VSCode/Jeux_Serpent/jeux_serpent.csproj",
       "projectName": "jeux_serpent",
-      "projectPath": "C:\\Java Projects\\jeux_serpent\\jeux_serpent.csproj",
-      "packagesPath": "C:\\Users\\gmansutti\\.nuget\\packages\\",
-      "outputPath": "C:\\Java Projects\\jeux_serpent\\obj\\",
+      "projectPath": "/Users/imran.chikh/VSCode/Jeux_Serpent/jeux_serpent.csproj",
+      "packagesPath": "/Users/imran.chikh/.nuget/packages/",
+      "outputPath": "/Users/imran.chikh/VSCode/Jeux_Serpent/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\gmansutti\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/imran.chikh/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -64,7 +64,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
