@@ -30,6 +30,13 @@ namespace SnakeGame
         static bool gameOver = false;
         static int delay = 500; // Temps entre chaque tour (en millisecondes)
 
+        static void InitGame()
+        {
+            snake.Clear();
+            snake.Add(new Point(width / 2, height / 2));
+            GenerateFood();
+        }
+
         static void ProcessInput()
         {
             if (Console.KeyAvailable)
