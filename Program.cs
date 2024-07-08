@@ -19,11 +19,15 @@ namespace SnakeGame
             Console.WriteLine("Game Over! Your score: " + score);
         }
 
+        static List<Point> snake = new List<Point>();
+        static Point food;
+        static Random rand = new Random();
         static int width = 20;
         static int height = 20;
         static int score = 0;
         static bool gameOver = false;
         static int delay = 500; // Temps entre chaque tour (en millisecondes)
+        static Direction currentDirection = Direction.Right;
 
         static void InitGame()
         {
@@ -131,6 +135,26 @@ namespace SnakeGame
                 food = new Point(rand.Next(width), rand.Next(height));
             }
             while (snake.Any(p => p.X == food.X && p.Y == food.Y));
+        }
+
+        public struct Point
+        {
+            public int X { get; set; }
+            public int Y { get; set; }
+
+            public Point(int x, int y)
+            {
+                X = x;
+                Y = y;
+            }
+        }
+
+        public enum Direction
+        {
+            Up,
+            Down,
+            Left,
+            Right
         }
     }
 }
