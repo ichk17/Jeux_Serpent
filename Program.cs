@@ -56,5 +56,45 @@ namespace SnakeGame
                 }
             }
         }
+
+        static void Update()
+        {
+            Point head = snake[0];
+            Point newHead = new Point();
+
+            switch (currentDirection)
+            {
+                case Direction.Up:
+                    newHead = new Point(head.X, head.Y - 1);
+                    break;
+                case Direction.Down:
+                    newHead = new Point(head.X, head.Y + 1);
+                    break;
+                case Direction.Left:
+                    newHead = new Point(head.X - 1, head.Y);
+                    break;
+                case Direction.Right:
+                    newHead = new Point(head.X + 1, head.Y);
+                    break;
+            }
+
+            if (newHead.X < 0 || newHead.Y < 0 || newHead.X >= width || newHead.Y >= height || snake.Any(p => p.X == newHead.X && p.Y == newHead.Y))
+            {
+                gameOver = true;
+                return;
+            }
+
+            snake.Insert(0, newHead);
+
+            if (newHead.X == food.X && newHead.Y == food.Y)
+            {
+                score++;
+                GenerateFood();
+            }
+            else
+            {
+                snake.RemoveAt(snake.Count - 1);
+            }
+        }
     }
 }
