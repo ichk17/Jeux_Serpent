@@ -29,5 +29,81 @@ namespace SnakeGame
         static int score = 0;
         static bool gameOver = false;
         static int delay = 500; // Temps entre chaque tour (en millisecondes)
+
+        static void ProcessInput()
+        {
+            if (Console.KeyAvailable)
+            {
+                var key = Console.ReadKey(true).Key;
+                switch (key)
+                {
+                    case ConsoleKey.UpArrow:
+                        if (currentDirection != Direction.Down)
+                            currentDirection = Direction.Up;
+                        break;
+                    case ConsoleKey.DownArrow:
+                        if (currentDirection != Direction.Up)
+                            currentDirection = Direction.Down;
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        if (currentDirection != Direction.Right)
+                            currentDirection = Direction.Left;
+                        break;
+                    case ConsoleKey.RightArrow:
+                        if (currentDirection != Direction.Left)
+                            currentDirection = Direction.Right;
+                        break;
+                }
+            }
+        }
+
+        static void Update()
+        {
+            Point head = snake[0];
+            Point newHead = new Point();
+
+            switch (currentDirection)
+            {
+                case Direction.Up:
+                    newHead = new Point(head.X, head.Y - 1);
+                    break;
+                case Direction.Down:
+                    newHead = new Point(head.X, head.Y + 1);
+                    break;
+                case Direction.Left:
+                    newHead = new Point(head.X - 1, head.Y);
+                    break;
+                case Direction.Right:
+                    newHead = new Point(head.X + 1, head.Y);
+                    break;
+            }
+
+            if (newHead.X < 0 || newHead.Y < 0 || newHead.X >= width || newHead.Y >= height || snake.Any(p => p.X == newHead.X && p.Y == newHead.Y))
+            {
+                gameOver = true;
+                return;
+            }
+
+            snake.Insert(0, newHead);
+
+            if (newHead.X == food.X && newHead.Y == food.Y)
+            {
+                score++;
+                GenerateFood();
+            }
+            else
+            {
+                snake.RemoveAt(snake.Count - 1);
+            }
+        }
+
+        static void GenerateFood()
+        {
+            do
+            {
+                food = new Point(rand.Next(width), rand.Next(height));
+            }
+            while (snake.Any(p => p.X == food.X && p.Y == food.Y));
+        }
     }
 }
